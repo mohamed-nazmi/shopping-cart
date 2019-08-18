@@ -1,7 +1,8 @@
 const Product = require('../models/product');
 
 exports.getProducts = (req, res, next) => {
-    Product.fetchAll()
+    // Product.find().cursor() returns a cursor
+    Product.find()
         .then(products => {
             res.render('shop/product-list', {
                 prods: products,
@@ -16,7 +17,8 @@ exports.getProducts = (req, res, next) => {
 
 exports.getProduct = (req, res, next) => {
     const prodId = req.params.productId;
-    // console.log(prodId);
+    // findById() can accept a string and Mongoose will
+    // automatically convert it to an Object Id
     Product.findById(prodId)
         .then(product => {
             res.render('shop/product-detail', { 
@@ -29,7 +31,7 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-    Product.fetchAll()
+    Product.find()
         .then(products => {
             res.render('shop/index', {
                 prods: products,
