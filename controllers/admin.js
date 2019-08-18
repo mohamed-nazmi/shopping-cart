@@ -17,7 +17,10 @@ exports.postAddProduct = (req, res, next) => {
         title: title,
         price: price,
         description: description,
-        imageUrl: imageUrl
+        imageUrl: imageUrl,
+        userId: req.user
+        // req.user._id is great, but req.user is sufficient:
+        // Mongoose will pick the id by itself!
     });
     product
         .save()
@@ -77,6 +80,10 @@ exports.postEditProduct = (req, res, next) => {
 
 exports.getProducts = (req, res, next) => {
     Product.find()
+        // .select('title price')           // only titles and prices are selected from the products
+        // .select('title price -_id')      // ids from returned products are explicitly excluded!
+        // .populate('userId')              // returned products will have all users' info
+        // .populate('userId', 'name')      // returned products will have the users' names
         .then(products => {
             res.render('admin/products', {
                 prods: products,
