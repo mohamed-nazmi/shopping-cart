@@ -39,8 +39,7 @@ exports.getIndex = (req, res, next) => {
             res.render('shop/index', {
                 prods: products,
                 pageTitle: 'Shop',
-                path: '/',
-                isAuthenticated: req.session.isLoggedIn
+                path: '/'
             });
         })
         .catch(err => {
@@ -98,7 +97,7 @@ exports.postOrder = (req, res, next) => {
             });
             const order = new Order({
                 user: {
-                    name: req.user.name,
+                    email: req.user.email,
                     userId: req.user    // Mongoose will pick the id
                 },
                 products: products
