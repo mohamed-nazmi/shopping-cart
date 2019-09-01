@@ -26,3 +26,8 @@
 .form-control textarea.invalid {
     border-color: red;
 }
+
+.form-control a:link,
+.form-control a:visited {
+    color: #00695c;
+}

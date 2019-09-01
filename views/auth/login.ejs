@@ -31,9 +31,9 @@
             </div>
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <button class="btn" type="submit">Login</button>
+            <div class="form-control">
+                Forget your password? <a href="/reset">Reset</a>
+            </div>
         </form>
-        <div class="centered">
-            <a href="/reset">Reset Password</a>
-        </div>
     </main>
 <%- include('../includes/end.ejs') %>

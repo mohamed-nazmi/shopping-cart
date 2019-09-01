@@ -78,6 +78,10 @@ form {
   color: #ffeb3b;
 }
 
+.main-header__item button:focus {
+  outline: 0;
+}
+
 .mobile-nav {
   width: 30rem;
   height: 100vh;
